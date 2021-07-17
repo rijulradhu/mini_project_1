@@ -1,0 +1,12 @@
+appBar: AppBar(
+        title: Text('hello'),
+        centerTitle: false,
+        leading: IconButton(
+          onPressed: () => Navigator.of(context).pop(),
+          icon: Icon(Icons.email, color: Colors.grey[500],),
+        ),
+        backgroundColor: Colors.grey[200],
+        brightness: Brightness.light,
+        toolbarHeight: 5.0,
+        elevation: 0,
+      ),
