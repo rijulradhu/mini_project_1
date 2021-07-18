@@ -17,31 +17,47 @@ class _FeedbackPageState extends State<FeedbackPage> {
       appBar: AppBar(
         toolbarHeight: 0.0,
         brightness: Brightness.light,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.cyan,
         elevation: 0,
       ),
-      body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              TextButton.icon(
-                icon: Icon(Icons.close_rounded, color: Colors.grey[500]),
-                label: Text(
-                  ' Close',
-                  style: TextStyle(
-                    color: Colors.grey[500],
-                    fontSize: 14.0,
-                    )
-                  ),
-                onPressed: () => Navigator.of(context).pop(),
-              ),
-              QuestionCard(color1),
-            ],
+      body: Stack(
+          children: [ 
+            Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [
+                Color(0xFF00BCD4),
+                Color(0xFF00ACC1),
+                Color(0xFF0097A7),
+                Color(0xFF00838F),
+              ],
+              stops: [0.1,0.4,0.7,0.9]
+            )
           ),
         ),
-      ),
+            Padding(
+            padding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextButton.icon(
+                  icon: Icon(Icons.close_rounded, color: Colors.white),
+                  label: Text(
+                    ' Close',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 14.0,
+                      )
+                    ),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                QuestionCard(color1),
+              ],
+            ),
+          ),]
+        ),
     );
   }
 }

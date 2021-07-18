@@ -73,104 +73,105 @@ class _QuestionCardState extends State<QuestionCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
-        color: Colors.white,
-        elevation: 5.0,
-        shadowColor: Colors.grey[200],
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.0)
-        ),
-        margin: EdgeInsets.fromLTRB(10.0, 160.0, 10.0, 0.0),
-        child: Padding(
-          padding: EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
-          child: AnimatedSwitcher(
-            duration: Duration(milliseconds: 700),
-            child: _submitBool ? Column(
-              key: ValueKey(1),
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Icon(
-                  quesScreen,
-                  size: 75.0,
-                  color: Colors.amber[600],
+          color: Colors.grey[200],
+          elevation: 8.0,
+          shadowColor: Colors.cyan[600],
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(15.0)
+          ),
+          margin: EdgeInsets.fromLTRB(10.0, 160.0, 10.0, 0.0),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(16.0, 24.0, 16.0, 24.0),
+            child: AnimatedSwitcher(
+              duration: Duration(milliseconds: 700),
+              child: _submitBool ? Column(
+                key: ValueKey(1),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Icon(
+                    quesScreen,
+                    size: 75.0,
+                    color: Colors.amber[600],
+                  ),
                 ),
-              ),
-              ConstrainedBox(
-                constraints: BoxConstraints(
-                  maxHeight: 40,
-                  minHeight: 40,
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: 45,
+                    minHeight: 45,
+                  ),
+                  child: Text(
+                      '${ques[_counter]}',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        color: color,
+                      ),
+                    ),
                 ),
-                child: Text(
-                    '${ques[_counter]}',
+                SizedBox(height: 40.0,),
+                MyWidget(widget.color1),
+                SizedBox(height: 10.0),
+                ElevatedButton(
+                  onPressed: (){
+                    setState(quesChanger);
+                  },
+                  child: Text('$_buttonText'),
+                  style: ElevatedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    elevation: 0,
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    primary: Colors.cyanAccent[700],
+                    textStyle: TextStyle(
+                      fontSize: 15.0,
+                    )
+                  ),
+                ),
+              ],
+            ) : Column(
+              key: ValueKey(2),
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 25.0),
+                  child: Icon(
+                    endScreen,
+                    color: color,
+                    size: 75.0,
+                  ),
+                ),
+                Text(
+                    '$_text',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18.0,
                       color: color,
                     ),
                   ),
-              ),
-              SizedBox(height: 40.0,),
-              MyWidget(widget.color1),
-              SizedBox(height: 10.0),
-              ElevatedButton(
-                onPressed: (){
-                  setState(quesChanger);
-                },
-                child: Text('$_buttonText'),
-                style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  elevation: 0,
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  primary: Colors.cyanAccent[700],
-                  textStyle: TextStyle(
-                    fontSize: 15.0,
-                  )
-                ),
-              ),
-            ],
-          ) : Column(
-            key: ValueKey(2),
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(bottom: 25.0),
-                child: Icon(
-                  endScreen,
-                  color: color,
-                  size: 75.0,
-                ),
-              ),
-              Text(
-                  '$_text',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 18.0,
-                    color: color,
+                SizedBox(height: 107.0,),
+                ElevatedButton(
+                  onPressed: (){
+                    val = 1;
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Home'),
+                  style: ElevatedButton.styleFrom(
+                    shape: StadiumBorder(),
+                    elevation: 0,
+                    padding: EdgeInsets.symmetric(vertical: 10.0),
+                    primary: color,
+                    textStyle: TextStyle(
+                      fontSize: 15.0,
+                    )
                   ),
                 ),
-              SizedBox(height: 102.0,),
-              ElevatedButton(
-                onPressed: (){
-                  Navigator.of(context).pop();
-                },
-                child: Text('Home'),
-                style: ElevatedButton.styleFrom(
-                  shape: StadiumBorder(),
-                  elevation: 0,
-                  padding: EdgeInsets.symmetric(vertical: 10.0),
-                  primary: color,
-                  textStyle: TextStyle(
-                    fontSize: 15.0,
-                  )
-                ),
-              ),
-            ],
+              ],
+            ),
+            ),
           ),
-          ),
-        ),
-      );
+    );
   }
 }
 
