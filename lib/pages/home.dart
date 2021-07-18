@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mini_project_1/pages/feedback.dart';
 
 class Home extends StatelessWidget{
   @override
@@ -40,7 +39,6 @@ class Home extends StatelessWidget{
             ElevatedButton(
               child: Text('Start'),
               onPressed: (){
-                val = 1.0;
                 Navigator.pushNamed(context, '/feedback');
               },
               style: ElevatedButton.styleFrom(
