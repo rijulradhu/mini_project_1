@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 double val = 1;
 
 class QuestionCard extends StatefulWidget {
-  var color1;
+  final Color? color1;
   QuestionCard(this.color1);
   @override
   _QuestionCardState createState() => _QuestionCardState();
@@ -11,6 +11,7 @@ class QuestionCard extends StatefulWidget {
 
 class _QuestionCardState extends State<QuestionCard> {
 
+  Color? color1 = Colors.amber[300];
   int _counter = 0;
   bool _submitBool = true;
   String _buttonText = 'Next';
@@ -42,7 +43,6 @@ class _QuestionCardState extends State<QuestionCard> {
       _totalScore += val;
       val = 1;
       quesScreen = quesIcon[_counter];
-      widget.color1 = Colors.amber[300];
       if(_counter == 5){
         _buttonText = 'Submit';
       }
@@ -98,20 +98,21 @@ class _QuestionCardState extends State<QuestionCard> {
                 ),
                 ConstrainedBox(
                   constraints: BoxConstraints(
-                    maxHeight: 45,
-                    minHeight: 45,
+                    maxHeight: 48,
+                    minHeight: 48,
                   ),
                   child: Text(
                       '${ques[_counter]}',
                       textAlign: TextAlign.center,
                       style: TextStyle(
-                        fontSize: 18.0,
+                        fontSize: 20.0,
                         color: color,
+                        fontFamily: 'sans',
                       ),
                     ),
                 ),
                 SizedBox(height: 40.0,),
-                MyWidget(widget.color1),
+                MyWidget(),
                 SizedBox(height: 10.0),
                 ElevatedButton(
                   onPressed: (){
@@ -120,11 +121,13 @@ class _QuestionCardState extends State<QuestionCard> {
                   child: Text('$_buttonText'),
                   style: ElevatedButton.styleFrom(
                     shape: StadiumBorder(),
-                    elevation: 0,
+                    elevation: 2,
+                    shadowColor: Colors.grey[400],
                     padding: EdgeInsets.symmetric(vertical: 10.0),
                     primary: Colors.cyanAccent[700],
                     textStyle: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 17.0,
+                      fontFamily: 'sans',
                     )
                   ),
                 ),
@@ -146,11 +149,13 @@ class _QuestionCardState extends State<QuestionCard> {
                     '$_text',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18.0,
+                      fontSize: 20.0,
                       color: color,
+                      fontFamily: 'sans',
+                      letterSpacing: 0.4,
                     ),
                   ),
-                SizedBox(height: 107.0,),
+                SizedBox(height: 84.0,),
                 ElevatedButton(
                   onPressed: (){
                     val = 1;
@@ -159,11 +164,13 @@ class _QuestionCardState extends State<QuestionCard> {
                   child: Text('Home'),
                   style: ElevatedButton.styleFrom(
                     shape: StadiumBorder(),
-                    elevation: 0,
+                    elevation: 2,
+                    shadowColor: Colors.grey[400],
                     padding: EdgeInsets.symmetric(vertical: 10.0),
                     primary: color,
                     textStyle: TextStyle(
-                      fontSize: 15.0,
+                      fontSize: 17.0,
+                      fontFamily: 'sans',
                     )
                   ),
                 ),
@@ -176,15 +183,13 @@ class _QuestionCardState extends State<QuestionCard> {
 }
 
 class MyWidget extends StatefulWidget {
-  var color1;
-  MyWidget(this.color1);
-
   @override
   _MyWidget createState()=>_MyWidget();
 }
 
 class _MyWidget extends State<MyWidget> {
   String label ='\u{1F622}';
+  Color? color1 = Colors.amber[300];
   @override
   Widget build(BuildContext context) {
     return Slider(
@@ -192,19 +197,19 @@ class _MyWidget extends State<MyWidget> {
         setState((){
           if(value == 1){
             label = '\u{1F622}';
-            widget.color1 = Colors.amber[300];
+            color1 = Colors.amber[300];
           }else if(value == 2){
             label = '\u{2639}';
-            widget.color1 = Colors.amber[400];
+            color1 = Colors.amber[400];
           }else if(value == 3){
             label = '\u{1F610}';
-            widget.color1 = Colors.amber[600];
+            color1 = Colors.amber[600];
           }else if(value == 4){
             label = '\u{1F642}';
-            widget.color1 = Colors.amber[800];
+            color1 = Colors.amber[800];
           }else if(value == 5){
             label = '\u{1F929}';
-            widget.color1 = Colors.amber[900];
+            color1 = Colors.amber[900];
           }
           val = value;
         });
@@ -215,7 +220,7 @@ class _MyWidget extends State<MyWidget> {
       max: 5,
       label:label,   
       inactiveColor: Colors.cyan[200],
-      activeColor: widget.color1,   
+      activeColor: (val==1)?Colors.amber[300]:color1,   
     );
   }
 }

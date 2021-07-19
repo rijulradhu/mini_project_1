@@ -24,6 +24,7 @@ class Home extends StatelessWidget{
                   style: TextStyle(
                     color: Colors.cyan[700],
                     fontSize: 24.0,
+                    fontFamily: 'sans',
                   ),
                 ),
                 Text(
@@ -31,6 +32,7 @@ class Home extends StatelessWidget{
                   style: TextStyle(
                     color: Colors.cyan[900],
                     fontSize: 24.0,
+                    fontFamily: 'sans',
                   ),
                 ),
               ],
@@ -44,11 +46,12 @@ class Home extends StatelessWidget{
               style: ElevatedButton.styleFrom(
                 primary: Colors.cyanAccent[700],
                 padding: EdgeInsets.symmetric(horizontal: 60.0,vertical: 5.0),
-                elevation: 0,
+                elevation: 2,
+                shadowColor: Colors.grey[400],
                 shape: StadiumBorder(),
                 textStyle: TextStyle(
                   fontSize: 18.0,
-                  
+                  fontFamily: 'sans',
                 )
               ),
             )

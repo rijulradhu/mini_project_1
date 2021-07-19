@@ -48,10 +48,14 @@ class _FeedbackPageState extends State<FeedbackPage> {
                     ' Close',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 14.0,
-                      )
-                    ),
-                  onPressed: () => Navigator.of(context).pop(),
+                      fontSize: 16.0,
+                      fontFamily: 'sans',
+                    )
+                  ),
+                  onPressed: (){
+                    val = 1;
+                    Navigator.of(context).pop();
+                  },
                 ),
                 QuestionCard(color1),
               ],
