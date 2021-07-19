@@ -86,96 +86,102 @@ class _QuestionCardState extends State<QuestionCard> {
               duration: Duration(milliseconds: 700),
               child: _submitBool ? Column(
                 key: ValueKey(1),
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
-                  child: Icon(
-                    quesScreen,
-                    size: 75.0,
-                    color: Colors.amber[600],
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10.0),
+                    child: Icon(
+                      quesScreen,
+                      size: 75.0,
+                      color: Colors.amber[600],
+                    ),
                   ),
-                ),
-                ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxHeight: 48,
-                    minHeight: 48,
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 48,
+                      minHeight: 48,
+                    ),
+                    child: Text(
+                        '${ques[_counter]}',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 20.0,
+                          color: color,
+                          fontFamily: 'sans',
+                        ),
+                    ),
                   ),
-                  child: Text(
-                      '${ques[_counter]}',
+                  SizedBox(height: 40.0,),
+                  MyWidget(),
+                  SizedBox(height: 10.0),
+                  ElevatedButton(
+                    onPressed: (){
+                      setState(quesChanger);
+                    },
+                    child: Text('$_buttonText'),
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      elevation: 2,
+                      shadowColor: Colors.grey[400],
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      primary: Colors.cyanAccent[700],
+                      textStyle: TextStyle(
+                        fontSize: 17.0,
+                        fontFamily: 'sans',
+                      )
+                    ),
+                  ),
+                ],
+              ) : Column(
+                key: ValueKey(2),
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 25.0),
+                    child: Icon(
+                      endScreen,
+                      color: color,
+                      size: 75.0,
+                    ),
+                  ),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(
+                      maxHeight: 47,
+                      minHeight: 47,
+                    ),
+                    child: Text(
+                      '$_text',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 20.0,
                         color: color,
                         fontFamily: 'sans',
+                        letterSpacing: 0.4,
                       ),
                     ),
-                ),
-                SizedBox(height: 40.0,),
-                MyWidget(),
-                SizedBox(height: 10.0),
-                ElevatedButton(
-                  onPressed: (){
-                    setState(quesChanger);
-                  },
-                  child: Text('$_buttonText'),
-                  style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    elevation: 2,
-                    shadowColor: Colors.grey[400],
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    primary: Colors.cyanAccent[700],
-                    textStyle: TextStyle(
-                      fontSize: 17.0,
-                      fontFamily: 'sans',
-                    )
                   ),
-                ),
-              ],
-            ) : Column(
-              key: ValueKey(2),
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 25.0),
-                  child: Icon(
-                    endScreen,
-                    color: color,
-                    size: 75.0,
-                  ),
-                ),
-                Text(
-                    '$_text',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20.0,
-                      color: color,
-                      fontFamily: 'sans',
-                      letterSpacing: 0.4,
+                  SizedBox(height: 84.0,),
+                  ElevatedButton(
+                    onPressed: (){
+                      val = 1;
+                      Navigator.of(context).pop();
+                    },
+                    child: Text('Home'),
+                    style: ElevatedButton.styleFrom(
+                      shape: StadiumBorder(),
+                      elevation: 2,
+                      shadowColor: Colors.grey[400],
+                      padding: EdgeInsets.symmetric(vertical: 10.0),
+                      primary: color,
+                      textStyle: TextStyle(
+                        fontSize: 17.0,
+                        fontFamily: 'sans',
+                      )
                     ),
                   ),
-                SizedBox(height: 84.0,),
-                ElevatedButton(
-                  onPressed: (){
-                    val = 1;
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Home'),
-                  style: ElevatedButton.styleFrom(
-                    shape: StadiumBorder(),
-                    elevation: 2,
-                    shadowColor: Colors.grey[400],
-                    padding: EdgeInsets.symmetric(vertical: 10.0),
-                    primary: color,
-                    textStyle: TextStyle(
-                      fontSize: 17.0,
-                      fontFamily: 'sans',
-                    )
-                  ),
-                ),
-              ],
-            ),
+                ],
+              ),
             ),
           ),
     );
